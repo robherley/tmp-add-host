@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: alpine
-      options: --add-host 'example.local:93.184.216.34'
+      options: --add-host example.local:93.184.216.34
     steps:
       - name: Add dns tools
         run: apk update && apk add bind-tools
