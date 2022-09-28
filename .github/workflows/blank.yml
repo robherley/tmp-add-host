@@ -1,0 +1,22 @@
+name: containers host test
+on: workflow_dispatch
+jobs:
+  container-with-host:
+    runs-on: ubuntu-latest
+    container:
+      image: alpine
+      options: --add-host 'example.local:1.1.1.1'
+    steps:
+      - name: Add dns tools
+        run: apk update && apk add bind-tools
+      - name: Run query 
+        run: dig example.local +tries=1 +time=1
+  container-without-host:
+    runs-on: ubuntu-latest
+    container:
+      image: alpine
+    steps:
+      - name: Add dns tools
+        run: apk update && apk add bind-tools
+      - name: Run query 
+        run: dig example.local +tries=1 +time=1
