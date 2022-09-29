@@ -1,4 +1,4 @@
-name: containers host test
+name: containers host
 on: workflow_dispatch
 jobs:
   container-with-host:
